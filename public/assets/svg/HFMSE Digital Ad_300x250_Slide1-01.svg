@@ -9,7 +9,16 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <style type="text/css">.st0{fill:#B51D22;}
+ <defs>
+  <filter id="glow" x="-150%" y="-150%" height="500%" width="500%">
+    <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+    <feMerge>
+    <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter> 
+ </defs>
+ <style type="text/css">
+  .st0{fill:#B51D22;}
 	.st1{fill:#5A5A5C;}
 	.st2{fill:#FFFFFF;}
 	.st3{font-family:'CenturyGothic-Bold';}
@@ -58,7 +67,8 @@
 	.st46{clip-path:url(#SVGID_68_);fill:#58595B;}
 	.st47{clip-path:url(#SVGID_70_);fill:#58595B;}
 	.st48{clip-path:url(#SVGID_72_);fill:#58595B;}
-  [id*=text-frame]{fill-opacity:0;}</style>
+  [id*=text-frame]{fill-opacity:0;}
+ </style>
  <g>
   <title>layer-frame-1</title>
   <rect class="st0" width="300" height="89.8"/>
