@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HFMSE | TEST</title>
+    <style>
+      .hfmse {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+  <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  </body>
+  <script>
+  window.onload=function() {
+    var ad = document.getElementById('hmfse');
+    var svgDoc = ad.contentDocument;
+    var splitgear = svgDoc.getElementById('splitgear');
+    var gears = svgDoc.getElementsByClassName('grey-gear')
+    var freeRegMsg = svgDoc.querySelectorAll('.free-reg path');
+    var eventMsg = svgDoc.querySelectorAll('.event path');
+
+    TweenMax.to(gears, 2, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1});
+    TweenMax.to(splitgear, 2.5, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1, repeatDelay:2.5, yoyo:true});
+
+    var tlMsgs = new TimelineMax({repeat:-1, repeatDelay:2});
+    tlMsgs.add(TweenMax.to(freeRegMsg, 3, {css:{'fill-opacity': 0}, delay:1}));
+    tlMsgs.add(TweenMax.to(eventMsg, 3, {css:{'fill-opacity': 1}, ease:Linear.ease, delay:1}));
+
+  };  
+
+  </script>
+</html>
