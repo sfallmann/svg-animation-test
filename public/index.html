@@ -20,15 +20,25 @@
     var svgDoc = ad.contentDocument;
     var splitgear = svgDoc.getElementById('splitgear');
     var gears = svgDoc.getElementsByClassName('grey-gear')
-    var freeRegMsg = svgDoc.querySelectorAll('.free-reg path');
-    var eventMsg = svgDoc.querySelectorAll('.event path');
-
+    var textFrame1 = svgDoc.getElementById('text-frame-1');
+    var textFrame2 = svgDoc.getElementById('text-frame-2');
+    var textFrame3 = svgDoc.getElementById('text-frame-3');
+    var oneOfAKind = svgDoc.getElementById('one-of-a-kind');
+    
     TweenMax.to(gears, 2, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1});
     TweenMax.to(splitgear, 2.5, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1, repeatDelay:2.5, yoyo:true});
 
+    console.log(oneOfAKind)
+
     var tlMsgs = new TimelineMax({repeat:-1, repeatDelay:2});
-    tlMsgs.add(TweenMax.to(freeRegMsg, 3, {css:{'fill-opacity': 0}, delay:1}));
-    tlMsgs.add(TweenMax.to(eventMsg, 3, {css:{'fill-opacity': 1}, ease:Linear.ease, delay:1}));
+
+    tlMsgs.add(TweenMax.to(textFrame1, 2, {css:{'fill-opacity': 1}, delay:1}));
+    tlMsgs.add(TweenMax.to(textFrame1, 2, {css:{'fill-opacity': 0}, delay:1}));
+    tlMsgs.add(TweenMax.to(textFrame2, 2, {css:{'fill-opacity': 1}, delay:1}));
+    tlMsgs.add(TweenMax.to(textFrame2, 2, {css:{'fill-opacity': 0}, delay:1}));
+    tlMsgs.add(TweenMax.to(textFrame3, 2, {css:{'fill-opacity': 1}, delay:1}));
+    tlMsgs.add(TweenMax.to(textFrame3, 2, {css:{'fill-opacity': 0}, delay:1}));
+
 
   };  
 
