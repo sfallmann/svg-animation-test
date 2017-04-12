@@ -2,45 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <title>HFMSE | TEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>HFMSE</title>
+    <meta name=”ad.size” content=”width=300,height=250”>
+    <script type="text/javascript">
+      var clickTag = "http://www.hfmse.com/"; 
+    </script>    
     <style>
+      html, body, div,
+      a, img {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      body {
+        line-height: 1;
+      }
+
+      body {
+        background:white;
+        overflow:hidden;
+        width:300px;
+      }
       .hfmse {
         width: 300px;
       }
     </style>
   </head>
   <body>
-  <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+  <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse" onclick="javascript:window.open(window.clickTag)">
+    <img src='assets/img/test.JPG' onclick="javascript:window.open(window.clickTag)">
+  </object>
+  <!--[if gte IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script src="assets/js/hfmse.js"></script>
+  <![endif]-->  
   </body>
-  <script>
-  window.onload=function() {
-    var ad = document.getElementById('hmfse');
-    var svgDoc = ad.contentDocument;
-    var splitgear = svgDoc.getElementById('splitgear');
-    var gears = svgDoc.getElementsByClassName('grey-gear')
-    var textFrame1 = svgDoc.getElementById('text-frame-1');
-    var textFrame2 = svgDoc.getElementById('text-frame-2');
-    var textFrame3 = svgDoc.getElementById('text-frame-3');
-    var oneOfAKind = svgDoc.querySelectorAll('#one-of-a-kind path');
-    
-    TweenMax.to(gears, 2, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1});
-    TweenMax.to(splitgear, 2.5, {rotation:"360", transformOrigin:"center center", ease:Linear.easeNone, repeat:-1, repeatDelay:2.5, yoyo:true});
-
-    var tlMsgs = new TimelineMax({repeat:-1, repeatDelay:2});
-    tlMsgs.add(TweenMax.to(textFrame1, 2, {css: {'fill-opacity': 1}, delay:1}));
-    tlMsgs.add(TweenMax.to(textFrame1, 2, {css: {'fill-opacity': 0}, delay:1}));
-    tlMsgs.add(TweenMax.to(textFrame2, 2, {css: {'fill-opacity': 1}, delay:1}));
-    tlMsgs.add(TweenMax.to(oneOfAKind, 2, {fill: '#ffff66'}));
-    tlMsgs.add(TweenMax.to(oneOfAKind, 2, {attr: {filter: "url(#glow)"}}),-.5);        
-    tlMsgs.add(TweenMax.to("#glow", 8, {attr:{stdDeviation: 0}}),-3.5);      
-    tlMsgs.add(TweenMax.to(textFrame2, 2, {css: {'fill-opacity': 0}, delay:1}));
-    tlMsgs.add(TweenMax.to(textFrame3, 2, {css: {'fill-opacity': 1}, delay:1}));
-    tlMsgs.add(TweenMax.to(textFrame3, 2, {css: {'fill-opacity': 0}, delay:1}));
-
-
-  };  
-
-  </script>
 </html>
