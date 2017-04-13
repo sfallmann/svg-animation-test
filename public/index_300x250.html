@@ -15,6 +15,7 @@
         font: inherit;
         vertical-align: baseline;
       }
+
       body {
         line-height: 1;
       }
@@ -25,6 +26,7 @@
         width:300px;
  
       }
+
       .hfmse {
         width: 300px;
         height: 250px;
@@ -34,37 +36,54 @@
         width: 300px;
         height: 250px;
       }
+
+      #img-fallback:hover {
+        cursor: pointer;
+      }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>    
     <script type="text/javascript">
+      // set clickTag - destination of click event
       var clickTag = "http://www.hfmse.com/";
 
       function loadAd() {
+
+        // load the svg from file
         $.get('assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg', function(data) {
+
+          // the div the svg will be appended to
           var $hfmse = $('#hfmse');
+          // the svg itself
           var $svg = $(data.querySelector('svg'));
+          // adds the class that sets a height and width to the div
           $hfmse.addClass('hfmse');
+          // appends the svg to the div
           $hfmse.append($svg)
+          // sets the action for the svg onclick event
           $svg.click(function(){
             window.open(clickTag);
           })
           
-          var splitgear = document.querySelector('#splitgear');
-          var gears = document.getElementsByClassName('grey-gear')
-          var textFrame1 = document.querySelector('#text-frame-1');
-          var textFrame2 = document.querySelector('#text-frame-2');
-          var textFrame3 = document.querySelector('#text-frame-3');
-          var oneOfAKind = document.querySelector('#one-of-a-kind path');
+          // the parts of the svg that will be animated
+          var $splitgear = $('#splitgear');
+          var $gears = $('.grey-gear')
+          var $textFrame1 = $('#text-frame-1');
+          var $textFrame2 = $('#text-frame-2');
+          var $textFrame3 = $('#text-frame-3');
+          var $oneOfAKind = $('#one-of-a-kind path');
 
-          TweenMax.to(gears, 2, {
+          // the animation for the smaller gears
+          TweenMax.to($gears, 2, {
             rotation: '360',
             transformOrigin: 'center center',
             ease: Linear.easeNone,
             repeat: -1
           });
 
-          TweenMax.to(splitgear, 2.5, {
+          // the animation for the larger gear
+          TweenMax.to($splitgear, 2.5, {
             rotation: '360',
             transformOrigin: 'center center',
             ease: Linear.easeNone,
@@ -73,27 +92,33 @@
             yoyo: true
           });
 
+          //  the timeline for shifting between the different sets of text
+          //  which is set to loop infinitedly (repeat: -1)
           var tlMsgs = new TimelineMax({repeat: -1, repeatDelay: 2});
-          tlMsgs.add(TweenMax.to(textFrame1, 2, {css: {'fill-opacity': 1}, delay: 1}));
-          tlMsgs.add(TweenMax.to(textFrame1, 2, {css: {'fill-opacity': 0}, delay: 1}));
-          tlMsgs.add(TweenMax.to(textFrame2, 2, {css: {'fill-opacity': 1}, delay: 1}));
-          tlMsgs.add(TweenMax.to(oneOfAKind, 2, {fill: '#ffff66'}));
-          tlMsgs.add(TweenMax.to(oneOfAKind, 2, {attr: {filter: 'url(#glow)'}}), -.5);
+
+          // the first frame of test
+          tlMsgs.add(TweenMax.to($textFrame1, 2, {css: {'fill-opacity': 1}, delay: 1}));
+          tlMsgs.add(TweenMax.to($textFrame1, 2, {css: {'fill-opacity': 0}, delay: 1}));
+          tlMsgs.add(TweenMax.to($textFrame2, 2, {css: {'fill-opacity': 1}, delay: 1}));
+
+          // the second frame of text and making one-of-a-kind glow
+          tlMsgs.add(TweenMax.to($oneOfAKind, 2, {fill: '#ffff66'}));
+          tlMsgs.add(TweenMax.to($oneOfAKind, 2, {attr: {filter: 'url(#glow)'}}), -.5);
           tlMsgs.add(TweenMax.to('#glow', 8, {attr: {stdDeviation: 0}}), -3.5);
-          tlMsgs.add(TweenMax.to(textFrame2, 2, {css: {'fill-opacity': 0}, delay: 1}));
-          tlMsgs.add(TweenMax.to(textFrame3, 2, {css: {'fill-opacity': 1}, delay: 1}));
-          tlMsgs.add(TweenMax.to(textFrame3, 2, {css: {'fill-opacity': 0}, delay: 1}));       
+
+          // the third frame of text
+          tlMsgs.add(TweenMax.to($textFrame2, 2, {css: {'fill-opacity': 0}, delay: 1}));
+          tlMsgs.add(TweenMax.to($textFrame3, 2, {css: {'fill-opacity': 1}, delay: 1}));
+          tlMsgs.add(TweenMax.to($textFrame3, 2, {css: {'fill-opacity': 0}, delay: 1}));       
 
         });
       }
     </script>        
   </head>
-
-
   <body>
   <div id="hfmse"></div>
   <!--[if lte IE 8]>
-    <img id="img-fallback" src='assets/img/test.JPG' onclick="javascript:window.open(window.clickTag)">
+    <img id="img-fallback" src='assets/img/test.JPG' alt="HFMSE Registration" onclick="javascript:window.open(window.clickTag)">
   <![endif]-->  
   <!--[if gt IE 8]>
     <script>loadAd();</script>
