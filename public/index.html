@@ -26,22 +26,32 @@
         background:white;
         overflow:hidden;
         width:300px;
+ 
       }
       .hfmse {
         width: 300px;
       }
+
+      #img-fallback {
+        width: 300px;
+        height: 250px;
+      }
     </style>
   </head>
   <body>
+  <!--[if lte IE 8]>
+    <img id="img-fallback" src='assets/img/test.JPG' onclick="javascript:window.open(window.clickTag)">
+  <![endif]-->  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
 
-  <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse" onclick="javascript:window.open(window.clickTag)">
-    <img src='assets/img/test.JPG' onclick="javascript:window.open(window.clickTag)">
-  </object>
-
-
-  <!--[if gt IE 8]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  <!--[if gte IE 9]>
+    <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse">
     <script src="assets/js/hfmse.js"></script>
   <![endif]-->  
+  <![if !(IE)]>
+    <object type="image/svg+xml" data="assets/svg/HFMSE Digital Ad_300x250_Slide1-01.svg" id="hmfse" class="hfmse">
+    <script src="assets/js/hfmse.js"></script>
+  <![endif]>
+
   </body>
 </html>
