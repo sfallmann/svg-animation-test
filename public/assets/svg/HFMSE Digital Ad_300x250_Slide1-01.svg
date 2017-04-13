@@ -18,6 +18,7 @@
   </filter> 
  </defs>
  <style type="text/css">
+  svg {cursor:pointer;}
   .st0{fill:#B51D22;}
 	.st1{fill:#5A5A5C;}
 	.st2{fill:#FFFFFF;}
@@ -70,7 +71,7 @@
   [id*=text-frame]{fill-opacity:0;}
  </style>
  <g>
-  <title>layer-frame-1</title>
+  <title>HFMSE</title>
   <rect class="st0" width="300" height="89.8"/>
   <rect class="st1" y="211" width="300" height="39"/>
   <path class="st2" d="m12.4 239.6v-2.5c0.4 0.1 0.7 0.2 1 0.2 0.5 0 0.9-0.1 1.2-0.4s0.4-0.8 0.4-1.6v-10.9h-2v-2.4h7.4v2.3h-1.8v11c0 1.5-0.4 2.6-1.1 3.4s-1.7 1.1-2.9 1.1c-0.8 0-1.4-0.1-2.2-0.2z"/>
